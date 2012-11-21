@@ -1,0 +1,10 @@
+<h2>featured users & posts</h2>
+
+<% @authors.each do |author| -%>
+  <% if author.featured_post.present? -%>
+  <p><%= link_to author.featured_post.subject, root_url(host:author.domain) %></p>
+  <span><%= author.name %></span>
+  <span><%= author.organization %></span>
+  <% end -%>
+<% end -%>
+
