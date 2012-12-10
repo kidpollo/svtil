@@ -1,0 +1,28 @@
+// Media Queries
+
+$screenSmall: 768px !default;
+$screenMedium: 1279px !default;
+$screenXlarge: 1441px !default;
+
+// Saving for better em-based testing
+// $screenSmall: 44em !default;
+// $screenMedium: 77em !default;
+// $screenXlarge: 104em !default;
+
+// Saving for Sass 3.2 stable release
+// $mediaSmall: "only screen and (max-width: 767px)" !default;
+// $mediaMedium: "only screen and (max-width: 1279px) and (min-width: 768px)" !default;
+// $mediaXlarge: "only screen and (min-width: 1441px)" !default;
+// $mediaLandscape: "screen and (orientation: landscape)" !default;
+// $mediaPortrait: "screen and (orientation: portrait)" !default;
+// $mediaAll: "only screen and (max-device-width: 800px), only screen and (device-width: 1024px) and (device-height: 600px), only screen and (width: 1280px) and (orientation: landscape), only screen and (device-width: 800px), only screen and (max-width: 767px)" !default;
+
+@mixin respondTo($media) {
+  @if $media == smallScreen {
+    @media only screen and (max-width: $screenSmall - 1) { @content; }
+  } @else if $media == mediumScreen {
+    @media only screen and (max-width: $screenMedium) and (min-width: $screenSmall) { @content; }
+  } @else if $media == largeScreen {
+    @media only screen and (min-width: $screenXlarge) { @content; }
+  }
+}
