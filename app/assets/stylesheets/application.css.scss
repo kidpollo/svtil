@@ -14,3 +14,84 @@
 body {
   font-family: 'Lato';
 }
+
+* {
+  box-sizing: border-box;
+}
+
+$mainbar-w: 280px;
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  .content {
+    margin-left: $mainbar-w;
+    padding-left: 60px;
+    padding-right: 20px;
+    font: 18px/24px Lato, sans-serif;
+    font-weight: 200;
+  }
+}
+
+.mainbar {
+  height: 100%;
+  left: 50%;
+  margin-left: -500px;
+  position: fixed;
+  top: 0;
+  width: $mainbar-w;
+  color: #939597;
+  font-size: 18px;
+  line-height: 20px;
+  > .wrapper {
+    position: relative;
+    height: 100%;
+    .sitewide_nav {
+      border-bottom: 8px solid #d1d2d4;
+      bottom: 100px;
+      padding-bottom: 20px;
+      position: absolute;
+      width: 100%;
+      a {
+        display: block;
+        float: right;
+        margin-right: 37px;
+      }
+    }
+  }
+  .author_avatar {
+    display: block;
+    margin: 100px auto 0;
+    width: 140px;
+    height: 140px;
+  }
+  .author_name {
+    font: 22px/22px Lato;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .author_bio, .author_twitter, .author_website {
+    font-weight: 200;
+    width: 204px;
+    margin: 0 auto;
+    a {
+      text-decoration: none;
+      font-style: italic;
+    }
+  }
+  .author_twitter {
+    margin-top: 22px;
+  }
+}
+.post_crumb {
+  line-height: 40px;
+  cursor: pointer;
+  .post_subject {
+    font-size: 36px;
+    text-transform: uppercase;
+    margin: 0;
+  }
+  .subheader {
+    font-size: 18px;
+  }
+}

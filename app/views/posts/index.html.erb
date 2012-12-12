@@ -1,6 +1,19 @@
-<h2><%= @current_author.name %></h2>
+<% content_for :mainbar do %>
+  <%= image_tag @current_author.avatar, class: 'author_avatar'%>
+  <h2 class="author_name"><%= @current_author.name %></h2>
+  <div class="author_bio"><%= @current_author.bio %></div>
+  <div class="author_twitter"><%= link_to "@#{ @current_author.twitter }", "http://twitter.com/#{@current_author.twitter}" %></div>
+  <div class="author_website"><%= link_to @current_author.website, @current_author.website %></div>
+<% end %>
 
+<% content_for :author_class do %><%= @current_author.author_class %><% end %>
+<nav class="posts_nav nav">
+<%= link_to 'Regresar a svtil', root_url %>
+</nav>
 <% @posts.each do |post| -%>
-  <p><%= post.subject %></p>
-  <p><%= post.body %></p>
+  <article class="post_crumb">
+  <h3 class="post_subject"><%= link_to post.subject, post %></h3>
+  <div class="subheader">
+    <span class="date">Del <%= post.created_at %></span> en <%= link_to 'nombre del tema', "#" %>
+  </div>
 <% end -%>

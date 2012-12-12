@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_filter :set_current_author_or_redirect
-  
+
   def index
     @posts = @current_author.posts.page(params[:page])
   end

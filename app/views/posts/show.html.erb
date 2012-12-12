@@ -1,2 +1,17 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<% content_for :mainbar do %>
+  <%= image_tag @current_author.avatar, class: 'author_avatar'%>
+  <h2 class="author_name"><%= @current_author.name %></h2>
+  <div class="author_bio"><%= @current_author.bio %></div>
+  <div class="author_twitter"><%= link_to "@#{ @current_author.twitter }", "http://twitter.com/#{@current_author.twitter}" %></div>
+  <div class="author_website"><%= link_to @current_author.website, @current_author.website %></div>
+<% end %>
+<% content_for :author_class do %><%= @current_author.author_class %><% end %>
+
+<nav class="post_nav nav">
+<%= link_to 'Regresar a articulos', posts_url %>
+</nav>
+<article class="post">
+<h3 class="post_subject"><%= @post.subject %></h3>
+<div class="post_body">
+  <%= @post.body %>
+</div>
