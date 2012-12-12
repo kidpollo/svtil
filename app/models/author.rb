@@ -1,5 +1,5 @@
 class Author < ActiveRecord::Base
-  attr_accessible :bio, :email, :name, :twitter, :website, :domain, :organization, :hex, :avatar
+  attr_accessible :bio, :email, :name, :twitter, :website, :domain, :organization, :hex, :avatar, :author_class
   has_many   :posts
   validates  :name, :domain, :presence => true
 

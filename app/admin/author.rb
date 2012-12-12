@@ -20,6 +20,7 @@ ActiveAdmin.register Author do
       f.input :bio, as: :text
       f.input :email
       f.input :hex
+      f.input :author_class
       f.input :avatar, as: :file
       f.input :twitter
       f.input :website
