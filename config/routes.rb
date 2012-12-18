@@ -5,6 +5,7 @@ Svtil::Application.routes.draw do
   end
 
   root :to => "home#index"
+  match 'authors' => 'home#authors_stylesheets'
   ActiveAdmin.routes(self)
   devise_for :admin_users, ActiveAdmin::Devise.config
 end

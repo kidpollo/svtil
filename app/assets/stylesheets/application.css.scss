@@ -8,13 +8,14 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  */
+@import 'fonts';
 
 $svtil_gray: #d1d2d4;
+$svtil_tone: #939597;
 
 %svtil_color {
-  color: #939597;
+  color: $svtil_tone;
 }
 
 %svtil_bg {
@@ -41,9 +42,9 @@ body {
 
 a {
   text-decoration: none;
-  color: #939597;
+  color: $svtil_tone;
   &:hover {
-    color: darken(#939597, 20%);
+    color: darken($svtil_tone, 20%);
   }
 }
 
@@ -193,7 +194,7 @@ $mainbar-w: 280px;
       border-radius: $circle-radius;
       line-height: $circle-radius;
       text-align: center;
-      background: $svtil_gray;
+      @extend %svtil_bg;
       color: white;
       display: inline-block;
       margin-right: 10px;
