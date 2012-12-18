@@ -5,15 +5,17 @@
   <div class="author_twitter"><%= link_to "@#{ @current_author.twitter }", "http://twitter.com/#{@current_author.twitter}" %></div>
   <div class="author_website"><%= link_to @current_author.website, @current_author.website %></div>
 <% end %>
-
 <% content_for :author_class do %><%= @current_author.author_class %><% end %>
 <nav class="posts_nav nav">
-<%= link_to 'Regresar a svtil', root_url %>
+  <a href="<%= root_path(host:DEFAULT_HOST) %>" class="back_arrow"><span class="icon">←</span>Regresar a svtil</a>
 </nav>
-<% @posts.each do |post| -%>
+<section class="post_crumbs">
+  <% @posts.each do |post| -%>
   <article class="post_crumb">
-  <h3 class="post_subject"><%= link_to post.subject, post %></h3>
-  <div class="subheader">
-    <span class="date">Del <%= post.created_at %></span> en <%= link_to 'nombre del tema', "#" %>
-  </div>
-<% end -%>
+    <h3 class="post_subject"><%= link_to post.subject, post %></h3>
+    <div class="subheader">
+      <span class="date">Del <%= post.created_at %></span> en <%= link_to 'nombre del tema', "#" %>
+    </div>
+  </article>
+  <% end -%>
+</section>

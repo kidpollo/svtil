@@ -6,12 +6,13 @@
   <div class="author_website"><%= link_to @current_author.website, @current_author.website %></div>
 <% end %>
 <% content_for :author_class do %><%= @current_author.author_class %><% end %>
-
 <nav class="post_nav nav">
-<%= link_to 'Regresar a articulos', posts_url %>
+  <a href="<%= posts_path %>" class="back_arrow"><span class="icon">←</span>Regresar a articulos</a>
 </nav>
 <article class="post">
-<h3 class="post_subject"><%= @post.subject %></h3>
-<div class="post_body">
-  <%= @post.body %>
-</div>
+  <h3 class="post_subject"><%= @post.subject %></h3>
+  <div class="post_info">Del <%= @post.created_at %> en <%= link_to 'nombre del tema', '#' %></div>
+  <div class="post_body">
+    <%= @post.body %>
+  </div>
+</article>

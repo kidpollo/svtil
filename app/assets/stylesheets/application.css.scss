@@ -11,8 +11,40 @@
  *= require_self
  */
 
+$svtil_gray: #d1d2d4;
+
+%svtil_color {
+  color: #939597;
+}
+
+%svtil_bg {
+  background-color: $svtil_gray;
+}
+
+%svtil_border {
+  border-color: $svtil_gray;
+}
+
+%padding {
+  padding-left: 60px;
+  padding-right: 20px;
+}
+
+%content_margin_top {
+  margin-top: 80px;
+}
+
 body {
   font-family: 'Lato';
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: #939597;
+  &:hover {
+    color: darken(#939597, 20%);
+  }
 }
 
 * {
@@ -25,9 +57,10 @@ $mainbar-w: 280px;
   width: 1000px;
   margin: 0 auto;
   .content {
-    margin-left: $mainbar-w;
-    padding-left: 60px;
-    padding-right: 20px;
+    @extend %svtil_border;
+    border-top-width: 8px;
+    border-top-style: solid;
+    margin-left: $mainbar-w + 1px;
     font: 18px/24px Lato, sans-serif;
     font-weight: 200;
   }
@@ -43,11 +76,16 @@ $mainbar-w: 280px;
   color: #939597;
   font-size: 18px;
   line-height: 20px;
+  border-top-width: 8px;
+  border-top-style: solid;
+  @extend %svtil_border;
   > .wrapper {
     position: relative;
     height: 100%;
     .sitewide_nav {
-      border-bottom: 8px solid #d1d2d4;
+      border-bottom-width: 8px;
+      border-bottom-style: solid;
+      @extend %svtil_border;
       bottom: 100px;
       padding-bottom: 20px;
       position: absolute;
@@ -69,6 +107,7 @@ $mainbar-w: 280px;
     font: 22px/22px Lato;
     text-transform: uppercase;
     text-align: center;
+    @extend %svtil_color;
   }
   .author_bio, .author_twitter, .author_website {
     font-weight: 200;
@@ -83,15 +122,79 @@ $mainbar-w: 280px;
     margin-top: 22px;
   }
 }
-.post_crumb {
-  line-height: 40px;
-  cursor: pointer;
-  .post_subject {
-    font-size: 36px;
-    text-transform: uppercase;
-    margin: 0;
+.post_crumbs{
+  @extend %content_margin_top;
+  .post_crumb {
+    @extend %padding;
+    line-height: 40px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    a {
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+    .post_subject {
+      font-size: 36px;
+      text-transform: uppercase;
+      margin: 0;
+      a {
+        font-weight: normal;
+      }
+    }
+    .subheader {
+      font-size: 18px;
+    }
+    &:hover {
+      @extend %svtil_bg;
+      @extend %svtil_color;
+      a {
+        color: white;
+      }
+    }
   }
-  .subheader {
-    font-size: 18px;
+}
+
+.post {
+  @extend %padding;
+  @extend %content_margin_top;
+  color: #58585b;
+  .post_subject {
+    margin: 0;
+    font-size: 36px;
+    line-height: 40px;
+    text-transform: uppercase;
+  }
+  .post_info {
+    font-style: italic;
+  }
+  .post_body {
+    margin-top: 40px;
+    a {
+      @extend %svtil_color;
+    }
+  }
+}
+
+.nav {
+  height: 80px;
+  padding-top: 30px;
+  @extend %padding;
+  $circle-radius: 40px;
+  a.back_arrow {
+    text-transform: uppercase;
+    .icon {
+      width: $circle-radius;
+      height: $circle-radius;
+      border-radius: $circle-radius;
+      line-height: $circle-radius;
+      text-align: center;
+      background: $svtil_gray;
+      color: white;
+      display: inline-block;
+      margin-right: 10px;
+    }
   }
 }
