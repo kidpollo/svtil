@@ -123,9 +123,11 @@ $mainbar-w: 280px;
   }
 }
 .post_crumbs{
-  @extend %content_margin_top;
+  margin-top: 60px;
   .post_crumb {
     @extend %padding;
+    padding-top: 15px;
+    padding-bottom: 15px;
     line-height: 40px;
     cursor: pointer;
     -webkit-transition: all 0.3s ease-in-out;

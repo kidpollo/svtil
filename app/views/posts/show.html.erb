@@ -11,8 +11,8 @@
 </nav>
 <article class="post">
   <h3 class="post_subject"><%= @post.subject %></h3>
-  <div class="post_info">Del <%= @post.created_at %> en <%= link_to 'nombre del tema', '#' %></div>
+  <div class="post_info">Del <%= @post.created_at %> en <%= link_to @post.category, '#' %></div>
   <div class="post_body">
-    <%= @post.body %>
+    <%= @post.rendered_body.html_safe %>
   </div>
 </article>

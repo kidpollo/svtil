@@ -14,7 +14,7 @@
   <article class="post_crumb">
     <h3 class="post_subject"><%= link_to post.subject, post %></h3>
     <div class="subheader">
-      <span class="date">Del <%= post.created_at %></span> en <%= link_to 'nombre del tema', "#" %>
+      <span class="date">Del <%= post.created_at %></span> en <%= link_to post.category, "#" %>
     </div>
   </article>
   <% end -%>
