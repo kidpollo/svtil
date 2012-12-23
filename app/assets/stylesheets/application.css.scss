@@ -8,9 +8,196 @@
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
  *
- *= require_self
  */
+@import 'fonts';
+
+$svtil_gray: #d1d2d4;
+$svtil_tone: #939597;
+
+%svtil_color {
+  color: $svtil_tone;
+}
+
+%svtil_bg {
+  background-color: $svtil_gray;
+}
+
+%svtil_border {
+  border-color: $svtil_gray;
+}
+
+%padding {
+  padding-left: 60px;
+  padding-right: 20px;
+}
+
+%content_margin_top {
+  margin-top: 80px;
+}
 
 body {
   font-family: 'Lato';
+  margin-top: 0;
+}
+
+a {
+  text-decoration: none;
+  color: $svtil_tone;
+  &:hover {
+    color: darken($svtil_tone, 20%);
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+$mainbar-w: 280px;
+
+.container {
+  width: 1000px;
+  margin: 0 auto;
+  .content {
+    @extend %svtil_border;
+    border-top-width: 8px;
+    border-top-style: solid;
+    margin-left: $mainbar-w + 1px;
+    font: 18px/24px Lato, sans-serif;
+    font-weight: 200;
+  }
+}
+
+.mainbar {
+  height: 100%;
+  left: 50%;
+  margin-left: -500px;
+  position: fixed;
+  top: 0;
+  width: $mainbar-w;
+  color: #939597;
+  font-size: 18px;
+  line-height: 20px;
+  border-top-width: 8px;
+  border-top-style: solid;
+  @extend %svtil_border;
+  > .wrapper {
+    position: relative;
+    height: 100%;
+    .sitewide_nav {
+      border-bottom-width: 8px;
+      border-bottom-style: solid;
+      @extend %svtil_border;
+      bottom: 100px;
+      padding-bottom: 20px;
+      position: absolute;
+      width: 100%;
+      a {
+        display: block;
+        float: right;
+        margin-right: 37px;
+      }
+    }
+  }
+  .author_avatar {
+    display: block;
+    margin: 100px auto 0;
+    width: 140px;
+    height: 140px;
+  }
+  .author_name {
+    font: 22px/22px Lato;
+    text-transform: uppercase;
+    text-align: center;
+    @extend %svtil_color;
+  }
+  .author_bio, .author_twitter, .author_website {
+    font-weight: 200;
+    width: 204px;
+    margin: 0 auto;
+    a {
+      text-decoration: none;
+      font-style: italic;
+    }
+  }
+  .author_twitter {
+    margin-top: 22px;
+  }
+}
+.post_crumbs{
+  margin-top: 60px;
+  .post_crumb {
+    @extend %padding;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 40px;
+    cursor: pointer;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    a {
+      -webkit-transition: all 0.3s ease-in-out;
+      -moz-transition: all 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
+    }
+    .post_subject {
+      font-size: 36px;
+      text-transform: uppercase;
+      margin: 0;
+      a {
+        font-weight: normal;
+      }
+    }
+    .subheader {
+      font-size: 18px;
+    }
+    &:hover {
+      @extend %svtil_bg;
+      @extend %svtil_color;
+      a {
+        color: white;
+      }
+    }
+  }
+}
+
+.post {
+  @extend %padding;
+  @extend %content_margin_top;
+  color: #58585b;
+  .post_subject {
+    margin: 0;
+    font-size: 36px;
+    line-height: 40px;
+    text-transform: uppercase;
+  }
+  .post_info {
+    font-style: italic;
+  }
+  .post_body {
+    margin-top: 40px;
+    a {
+      @extend %svtil_color;
+    }
+  }
+}
+
+.nav {
+  height: 80px;
+  padding-top: 30px;
+  @extend %padding;
+  $circle-radius: 40px;
+  a.back_arrow {
+    text-transform: uppercase;
+    .icon {
+      width: $circle-radius;
+      height: $circle-radius;
+      border-radius: $circle-radius;
+      line-height: $circle-radius;
+      text-align: center;
+      @extend %svtil_bg;
+      color: white;
+      display: inline-block;
+      margin-right: 10px;
+    }
+  }
 }

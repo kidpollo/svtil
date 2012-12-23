@@ -1,0 +1,18 @@
+<% @authors.each do |author| -%>
+.<%= author.author_class %> .mainbar .author_name,
+.<%= author.author_class %> .post_crumbs .post_crumb:hover,
+.<%= author.author_class %> .post .post_body a {
+  color: white;
+}
+
+.<%= author.author_class %> .post_crumbs .post_crumb:hover,
+.<%= author.author_class %> .nav a.back_arrow .icon {
+  background-color: <%= author.hex %>;
+}
+
+.<%= author.author_class %> .content,
+.<%= author.author_class %> .mainbar,
+.<%= author.author_class %> .mainbar > .wrapper .sitewide_nav {
+  border-color: <%= author.hex %>;
+}
+<% end %>

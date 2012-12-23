@@ -3,19 +3,22 @@
 <head>
   <title>Svtil</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "/authors", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <div class="container">
+  <div class="container <%= yield :author_class if content_for?(:author_class) %>">
     <div class="mainbar">
-      <% if content_for? :mainbar %>
-        <%= yield :mainbar %>
-      <% else %>
-        <h1><%= link_to image_tag('logo.png', alt: 'Svtil'), root_url(host:DEFAULT_HOST)%></h1>
-      <% end %>
-      <div class="sitewide_nav">
-        <%= link_to image_tag('sitewide_logo.png', alt: 'Svtil'), root_url(host:DEFAULT_HOST)%>
+      <div class="wrapper">
+        <% if content_for? :mainbar %>
+          <%= yield :mainbar %>
+        <% else %>
+          <h1><%= link_to image_tag('logo.png', alt: 'Svtil'), root_url(host:DEFAULT_HOST)%></h1>
+        <% end %>
+        <div class="sitewide_nav">
+          <%= link_to image_tag('sitewide_logo.png', alt: 'Svtil'), root_url(host:DEFAULT_HOST)%>
+        </div>
       </div>
     </div>
     <div class="content">

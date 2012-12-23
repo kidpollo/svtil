@@ -1,10 +1,12 @@
-<h2>featured users & posts</h2>
-
-<% @authors.each do |author| -%>
-  <% if author.featured_post.present? -%>
-  <p><%= link_to author.featured_post.subject, root_url(host:author.domain) %></p>
-  <span><%= author.name %></span>
-  <span><%= author.organization %></span>
+<section class="post_crumbs">
+  <% @authors.each do |author| -%>
+    <% if author.featured_post.present? -%>
+      <article class="post_crumb">
+        <h3 class="post_subject"><%= link_to author.featured_post.subject, root_url(host:author.domain) %></h3>
+        <div class="subheader">
+          Por <span class="author"><%= link_to author.name, root_url(host:author.domain) %></span> el <%= author.featured_post.created_at %>
+        </div>
+      </article>
+    <% end -%>
   <% end -%>
-<% end -%>
-
+</section>

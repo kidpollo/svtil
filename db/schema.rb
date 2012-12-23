@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121210064409) do
+ActiveRecord::Schema.define(:version => 20121218045239) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -58,6 +58,7 @@ ActiveRecord::Schema.define(:version => 20121210064409) do
     t.datetime "updated_at",   :null => false
     t.string   "avatar"
     t.string   "hex"
+    t.string   "author_class"
   end
 
   add_index "authors", ["domain"], :name => "index_authors_on_domain", :unique => true
@@ -66,9 +67,11 @@ ActiveRecord::Schema.define(:version => 20121210064409) do
     t.string   "subject"
     t.text     "body"
     t.integer  "author_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
     t.string   "slug"
+    t.text     "rendered_body"
+    t.string   "category"
   end
 
   add_index "posts", ["author_id"], :name => "index_posts_on_author_id"
