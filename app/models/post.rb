@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   def render_body
     require 'redcarpet'
     renderer = Redcarpet::Render::HTML.new
-    extensions = {fenced_code_blocks: true}
+    extensions = {fenced_code_blocks: true, tables: true}
     redcarpet = Redcarpet::Markdown.new(renderer, extensions)
     self.rendered_body = redcarpet.render self.body
   end
