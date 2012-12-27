@@ -123,6 +123,7 @@ $mainbar-w: 280px;
     float: right;
     margin-left: 0;
     width: 100%;
+    border-top: none;
   }
   > .wrapper {
     position: relative;
@@ -140,12 +141,23 @@ $mainbar-w: 280px;
       width: 100%;
       @include respondTo(smallScreen) {
         position: static;
+        padding-bottom: 5px;
+        margin-top: 20px;
       }
       a {
         display: block;
         float: right;
         margin-right: 37px;
+        @include respondTo(smallScreen) {
+          float: none;
+        }
       }
+    }
+  }
+  .author_infobox_wrapper {
+    @include respondTo(smallScreen) {
+      display: table;
+      margin-bottom: 10px;
     }
   }
   .author_avatar {
@@ -155,6 +167,10 @@ $mainbar-w: 280px;
     height: 140px;
     @include respondTo(smallScreen) {
       margin-top: 10px;
+      margin-left: 10px;
+      width: 90px;
+      height: 90px;
+      display: table-cell;
     }
   }
   .author_name {
@@ -162,11 +178,22 @@ $mainbar-w: 280px;
     text-transform: uppercase;
     text-align: center;
     @extend %svtil_color;
+    @include respondTo(smallScreen) {
+      width: 200px;
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
   .author_bio, .author_twitter, .author_website {
     font-weight: 200;
     width: 204px;
     margin: 0 auto;
+    @include respondTo(smallScreen) {
+      width: 300px;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 15px;
+    }
     a {
       text-decoration: none;
       font-style: italic;

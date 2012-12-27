@@ -1,6 +1,8 @@
 <% content_for :mainbar do %>
-  <%= image_tag @current_author.avatar, class: 'author_avatar'%>
-  <h2 class="author_name"><%= @current_author.name %></h2>
+  <div class="author_infobox_wrapper">
+    <%= image_tag @current_author.avatar, class: 'author_avatar'%>
+    <h2 class="author_name"><%= @current_author.name %></h2>
+  </div>
   <div class="author_bio"><%= @current_author.bio %></div>
   <div class="author_twitter"><%= link_to "@#{ @current_author.twitter }", "http://twitter.com/#{@current_author.twitter}" %></div>
   <div class="author_website"><%= link_to @current_author.website, @current_author.website %></div>
