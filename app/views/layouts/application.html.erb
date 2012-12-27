@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>Svtil</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= stylesheet_link_tag    "/authors", :media => "all" %>
   <%= javascript_include_tag "application" %>
@@ -9,6 +10,9 @@
 </head>
 <body>
   <div class="container <%= yield :author_class if content_for?(:author_class) %>">
+    <div class="content">
+      <%= yield %>
+    </div>
     <div class="mainbar">
       <div class="wrapper">
         <% if content_for? :mainbar %>
@@ -21,9 +25,9 @@
         </div>
       </div>
     </div>
-    <div class="content">
-      <%= yield %>
-    </div>
   </div>
+  <% if Rails.env.development? -%>
+  <script>document.write('<script src="http://' + (location.host || 'localhost').split(':')[0] + ':35729/livereload.js?snipver=1"></' + 'script>')</script>
+  <% end %>
 </body>
 </html>

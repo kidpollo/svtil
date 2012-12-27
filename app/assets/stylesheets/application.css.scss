@@ -10,9 +10,11 @@
  *
  */
 @import 'fonts';
+@import 'respond_to';
 
 $svtil_gray: #d1d2d4;
 $svtil_tone: #939597;
+$svtil_body: #58585b;
 
 %svtil_color {
   color: $svtil_tone;
@@ -29,10 +31,35 @@ $svtil_tone: #939597;
 %padding {
   padding-left: 60px;
   padding-right: 20px;
+  @include respondTo(smallScreen) {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
 }
 
 %content_margin_top {
   margin-top: 80px;
+  @include respondTo(smallScreen) {
+    margin-top: 10px;
+  }
+}
+
+%headline_fonts {
+  font-size: 36px;
+  line-height: 40px;
+  text-transform: uppercase;
+  @include respondTo(smallScreen) {
+    font-size: 24px;
+    line-height: 28px;
+  }
+}
+
+%subheadline_fonts {
+  font-size: 18px;
+  @include respondTo(smallScreen) {
+    font-size: 15px;
+    line-height: 23px;
+  }
 }
 
 body {
@@ -57,6 +84,10 @@ $mainbar-w: 280px;
 .container {
   width: 1000px;
   margin: 0 auto;
+  @include respondTo(smallScreen) {
+    width: auto;
+    margin: 0;
+  }
   .content {
     @extend %svtil_border;
     border-top-width: 8px;
@@ -64,6 +95,13 @@ $mainbar-w: 280px;
     margin-left: $mainbar-w + 1px;
     font: 18px/24px Lato, sans-serif;
     font-weight: 200;
+    @include respondTo(smallScreen) {
+      float: left;
+      margin-left: 0;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 23px;
+    }
   }
 }
 
@@ -80,22 +118,46 @@ $mainbar-w: 280px;
   border-top-width: 8px;
   border-top-style: solid;
   @extend %svtil_border;
+  @include respondTo(smallScreen) {
+    position: static;
+    float: right;
+    margin-left: 0;
+    width: 100%;
+    border-top: none;
+  }
   > .wrapper {
     position: relative;
     height: 100%;
+    @include respondTo(smallScreen) {
+      position: static;
+    }
     .sitewide_nav {
-      border-bottom-width: 8px;
-      border-bottom-style: solid;
       @extend %svtil_border;
+      border-bottom-style: solid;
+      border-bottom-width: 8px;
       bottom: 100px;
       padding-bottom: 20px;
       position: absolute;
       width: 100%;
+      @include respondTo(smallScreen) {
+        position: static;
+        padding-bottom: 5px;
+        margin-top: 20px;
+      }
       a {
         display: block;
         float: right;
         margin-right: 37px;
+        @include respondTo(smallScreen) {
+          float: none;
+        }
       }
+    }
+  }
+  .author_infobox_wrapper {
+    @include respondTo(smallScreen) {
+      display: table;
+      margin-bottom: 10px;
     }
   }
   .author_avatar {
@@ -103,17 +165,35 @@ $mainbar-w: 280px;
     margin: 100px auto 0;
     width: 140px;
     height: 140px;
+    @include respondTo(smallScreen) {
+      margin-top: 10px;
+      margin-left: 10px;
+      width: 90px;
+      height: 90px;
+      display: table-cell;
+    }
   }
   .author_name {
     font: 22px/22px Lato;
     text-transform: uppercase;
     text-align: center;
     @extend %svtil_color;
+    @include respondTo(smallScreen) {
+      width: 200px;
+      display: table-cell;
+      vertical-align: middle;
+    }
   }
   .author_bio, .author_twitter, .author_website {
     font-weight: 200;
     width: 204px;
     margin: 0 auto;
+    @include respondTo(smallScreen) {
+      width: 300px;
+      font-weight: 400;
+      font-size: 15px;
+      line-height: 15px;
+    }
     a {
       text-decoration: none;
       font-style: italic;
@@ -125,36 +205,32 @@ $mainbar-w: 280px;
 }
 .post_crumbs{
   margin-top: 60px;
-  .post_crumb {
-    @extend %padding;
-    padding-top: 15px;
-    padding-bottom: 15px;
-    line-height: 40px;
-    cursor: pointer;
+  @include respondTo(smallScreen) {
+    margin-top: 0;
+  }
+  .post_crumb_link {
+    color: $svtil_body;
     -webkit-transition: all 0.3s ease-in-out;
     -moz-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
-    a {
+    &:hover, &:active {
+      @extend %svtil_bg;
+      @extend %svtil_color;
+    }
+    .post_crumb {
+      @extend %padding;
+      line-height: 40px;
+      padding-bottom: 15px;
+      padding-top: 15px;
       -webkit-transition: all 0.3s ease-in-out;
       -moz-transition: all 0.3s ease-in-out;
       transition: all 0.3s ease-in-out;
-    }
-    .post_subject {
-      font-size: 36px;
-      text-transform: uppercase;
-      margin: 0;
-      a {
-        font-weight: normal;
+      .post_subject {
+        @extend %headline_fonts;
+        margin: 0;
       }
-    }
-    .subheader {
-      font-size: 18px;
-    }
-    &:hover {
-      @extend %svtil_bg;
-      @extend %svtil_color;
-      a {
-        color: white;
+      .subheader {
+        @extend %subheadline_fonts;
       }
     }
   }
@@ -163,18 +239,20 @@ $mainbar-w: 280px;
 .post {
   @extend %padding;
   @extend %content_margin_top;
-  color: #58585b;
+  color: $svtil_body;
   .post_subject {
+    @extend %headline_fonts;
     margin: 0;
-    font-size: 36px;
-    line-height: 40px;
-    text-transform: uppercase;
   }
   .post_info {
+    @extend %subheadline_fonts;
     font-style: italic;
   }
   .post_body {
     margin-top: 40px;
+    @include respondTo(smallScreen) {
+      margin-top: 20px;
+    }
     a {
       @extend %svtil_color;
     }
