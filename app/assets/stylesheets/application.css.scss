@@ -97,7 +97,6 @@ $mainbar-w: 280px;
     @include respondTo(smallScreen) {
       float: left;
       margin-left: 0;
-      font-weight: 300;
       font-size: 13px;
     }
   }
@@ -183,12 +182,11 @@ $mainbar-w: 280px;
     }
   }
   .author_bio, .author_twitter, .author_website {
-    font-weight: 200;
+    font-weight: 300;
     width: 204px;
     margin: 0 auto;
     @include respondTo(smallScreen) {
       width: 300px;
-      font-weight: 400;
       font-size: 15px;
       line-height: 15px;
     }
