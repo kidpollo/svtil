@@ -93,14 +93,11 @@ $mainbar-w: 280px;
     border-top-width: 8px;
     border-top-style: solid;
     margin-left: $mainbar-w + 1px;
-    font: 18px/24px Lato, sans-serif;
-    font-weight: 200;
+    font: 300 18px/133% Lato, sans-serif;
     @include respondTo(smallScreen) {
       float: left;
       margin-left: 0;
-      font-weight: 400;
-      font-size: 15px;
-      line-height: 23px;
+      font-size: 13px;
     }
   }
 }
@@ -185,12 +182,11 @@ $mainbar-w: 280px;
     }
   }
   .author_bio, .author_twitter, .author_website {
-    font-weight: 200;
+    font-weight: 300;
     width: 204px;
     margin: 0 auto;
     @include respondTo(smallScreen) {
       width: 300px;
-      font-weight: 400;
       font-size: 15px;
       line-height: 15px;
     }
